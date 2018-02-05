@@ -12,6 +12,9 @@ deploy:
   skip_cleanup: true
   provider: releases
   api_key: "$GIT_OAUTH_TOKEN_CHM"
-  file: "${TRAVIS_BUILD_DIR}/IDS/files/*.chm"
+  file_glob: true
+  file: ${TRAVIS_BUILD_DIR}/IDS/files/*
   on:
     repo: yshtemp/ISD
+    tags: false
+    branch: master
