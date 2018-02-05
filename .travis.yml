@@ -7,13 +7,11 @@ script:
   - travis_wait 30
   - chmod 775 ${TRAVIS_BUILD_DIR}/IDS/script.sh && cd ${TRAVIS_BUILD_DIR}/IDS/
   - ./script.sh
-  
-after_success:
-  deploy:
+
+deploy:
+  skip_cleanup: true
   provider: releases
   api_key: "$GIT_OAUTH_TOKEN_CHM"
-  file: "${${TRAVIS_BUILD_DIR}/IDS/files/*.chm"
-  skip_cleanup: true
+  file: "${TRAVIS_BUILD_DIR}/IDS/files/*.chm"
   on:
-    tags: false
-    branch: master
+    repo: yshtemp/ISD
