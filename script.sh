@@ -9,7 +9,7 @@ commit_files() {
 }
 
 upload_files() {
-  git remote add github https://$$GIT_OAUTH_TOKEN_CHM@github.com/yshtemp/ISD.git > /dev/null 2>&1
+  git remote add github https://$GIT_OAUTH_TOKEN_CHM@github.com/yshtemp/ISD.git > /dev/null 2>&1
   git push --quiet --set-upstream github master
 }
 
