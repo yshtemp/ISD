@@ -1,8 +1,5 @@
 sudo: required
 
-services:
-  - docker
-
 before_install:
   - git clone https://github.com/yshtemp/ISD.git IDS
 
@@ -11,6 +8,7 @@ script:
   - chmod 775 ${TRAVIS_BUILD_DIR}/IDS/script.sh && cd ${TRAVIS_BUILD_DIR}/IDS/
   - ./script.sh
   
+after_success:
   deploy:
   provider: releases
   api_key: "$GIT_OAUTH_TOKEN_CHM"
