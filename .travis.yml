@@ -8,6 +8,10 @@ script:
   - chmod 775 ${TRAVIS_BUILD_DIR}/IDS/script.sh && cd ${TRAVIS_BUILD_DIR}/IDS/
   - ./script.sh
 
+after_success:
+  - chmod 775 ${TRAVIS_BUILD_DIR}/IDS/push.sh && cd ${TRAVIS_BUILD_DIR}/IDS/
+  - ./push.sh
+
 deploy:
   skip_cleanup: true
   provider: releases
