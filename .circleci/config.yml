@@ -1,4 +1,12 @@
 version: 2
+dependencies:
+  pre:
+    - go get github.com/tcnksm/ghr
+
+compile:
+  override:
+    - ant package
+
 jobs:
   build:
     docker:
@@ -12,5 +20,4 @@ deployment:
   release:
     tag: /(?:0|[1-9]\d*)\.(?:0|[1-9]\d*)\.(?:0|[1-9]\d*)/
     commands:
-      - go get github.com/tcnksm/ghr
-      - ghr -t $GIT_OAUTH_TOKEN_CHM -u $CIRCLE_PROJECT_USERNAME -r $CIRCLE_PROJECT_REPONAME --replace `git describe --tags` $CIRCLE_ARTIFACTS
+      - ghr -t $GIT_OAUTH_TOKEN_CHM -u $CIRCLE_PROJECT_USERNAME -r $CIRCLE_PROJECT_REPONAME files/
