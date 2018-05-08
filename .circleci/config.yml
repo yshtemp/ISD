@@ -9,8 +9,7 @@ compile:
 
 jobs:
   build:
-    docker:
-      - image: circleci/ruby:2.4.1
+    machine: true
     steps:
       - checkout
       - run: chmod 775 script.sh
